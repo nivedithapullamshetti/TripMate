@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-19^hca)^gfx_a_73sz$bv0zq4%l+v!pt8(a4ewojk7*h7s#ggg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,12 +82,8 @@ WSGI_APPLICATION = 'travel_planner.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Tripmate',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE':'django.db.backends.sqlite3',
+        'NAME':BASE_DIR / 'db.sqlite3',
     }
 }
 
