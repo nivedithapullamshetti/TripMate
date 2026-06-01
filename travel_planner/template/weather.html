@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Weather Forecast</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+url("https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1600");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+.container{
+width:430px;
+padding:35px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(20px);
+border-radius:25px;
+box-shadow:0 8px 32px rgba(0,0,0,.35);
+text-align:center;
+color:white;
+}
+
+h1{
+font-size:32px;
+margin-bottom:25px;
+}
+
+.search-box{
+display:flex;
+gap:10px;
+margin-bottom:25px;
+}
+
+.search-box input{
+flex:1;
+padding:14px;
+border:none;
+outline:none;
+border-radius:30px;
+font-size:15px;
+}
+
+.search-box button{
+padding:14px 22px;
+border:none;
+border-radius:30px;
+background:#00c8ff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.search-box button:hover{
+transform:scale(1.05);
+}
+
+.weather-icon{
+font-size:80px;
+margin:15px 0;
+color:gold;
+}
+
+.temp{
+font-size:55px;
+font-weight:bold;
+}
+
+.city{
+font-size:24px;
+margin-top:10px;
+}
+
+.details{
+display:flex;
+justify-content:space-between;
+margin-top:30px;
+}
+
+.card{
+flex:1;
+padding:15px;
+}
+
+.card i{
+font-size:25px;
+margin-bottom:8px;
+}
+
+.travel-alert{
+margin-top:20px;
+padding:15px;
+border-radius:15px;
+background:rgba(255,255,255,.15);
+display:none;
+}
+
+.home-btn{
+display:inline-block;
+margin-top:25px;
+padding:12px 25px;
+background:rgba(255,255,255,.15);
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+border:1px solid rgba(255,255,255,.3);
+transition:.3s;
+}
+
+.home-btn:hover{
+background:#00c8ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+<i class="fa-solid fa-cloud-sun"></i>
+Weather Forecast
+</h1>
+
+<div class="search-box">
+<input
+type="text"
+id="cityInput"
+placeholder="Enter city name">
+
+<button onclick="changeWeather()">
+Search
+</button>
+</div>
+
+<div class="weather-icon">
+<i id="icon" class="fa-solid fa-sun"></i>
+</div>
+
+<div class="temp" id="temp">--°C</div>
+
+<div class="city" id="city">
+Search a City
+</div>
+
+<div class="details">
+
+<div class="card">
+<i class="fa-solid fa-droplet"></i>
+<p>Humidity</p>
+<h3 id="humidity">--%</h3>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-wind"></i>
+<p>Wind</p>
+<h3 id="wind">-- km/h</h3>
+</div>
+
+</div>
+
+<div class="travel-alert" id="travelAlert">
+<p id="alertText"></p>
+</div>
+
+<div style="margin-top:25px;">
+    <a href="{% url 'home' %}" class="home-btn">
+        <i class="fa-solid fa-house"></i>
+        Back to Home
+    </a>
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("cityInput")
+.addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+changeWeather();
+}
+});
+
+async function changeWeather(){
+
+const city =
+document.getElementById("cityInput").value.trim();
+
+if(city===""){
+alert("Please enter a city name");
+return;
+}
+
+const apiKey =
+"3d898599e6145242a449e910db711e57";
+
+const url =
+`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+try{
+
+const response = await fetch(url);
+const data = await response.json();
+
+console.log(data);
+
+if(data.cod != 200){
+alert("City not found");
+return;
+}
+
+const temp = Math.round(data.main.temp);
+const humidity = data.main.humidity;
+const wind = data.wind.speed;
+const condition = data.weather[0].main;
+
+document.getElementById("city").innerHTML =
+data.name;
+
+document.getElementById("temp").innerHTML =
+temp + "°C";
+
+document.getElementById("humidity").innerHTML =
+humidity + "%";
+
+document.getElementById("wind").innerHTML =
+wind + " km/h";
+
+let advice = "";
+
+if(condition.includes("Rain")){
+
+advice =
+"🌧 Carry an umbrella and waterproof essentials.";
+
+document.getElementById("icon").className =
+"fa-solid fa-cloud-rain";
+
+}
+else if(condition.includes("Snow")){
+
+advice =
+"❄ Wear warm clothes and gloves.";
+
+document.getElementById("icon").className =
+"fa-solid fa-snowflake";
+
+}
+else if(temp >= 35){
+
+advice =
+"☀ Stay hydrated. Carry water and sunglasses.";
+
+document.getElementById("icon").className =
+"fa-solid fa-sun";
+
+}
+else{
+
+advice =
+"🌤 Pleasant weather. Enjoy your journey.";
+
+document.getElementById("icon").className =
+"fa-solid fa-cloud-sun";
+
+}
+
+document.getElementById("travelAlert").style.display =
+"block";
+
+document.getElementById("alertText").innerHTML =
+advice;
+
+}
+catch(error){
+
+console.error(error);
+alert("Unable to fetch weather data");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

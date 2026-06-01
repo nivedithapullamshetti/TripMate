@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Saved Trips</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:
+linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),
+url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600");
+
+background-size:cover;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+margin:0;
+}
+
+.container{
+
+width:800px;
+
+padding:40px;
+
+background:rgba(255,255,255,.2);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+color:white;
+
+text-align:center;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.2);
+
+padding:20px;
+
+border-radius:15px;
+
+margin-top:20px;
+
+font-size:18px;
+
+}
+
+button{
+
+margin-top:30px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:30px;
+
+background:#00c853;
+
+font-size:18px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📌 Saved Trip</h1>
+
+<div class="card">
+
+<p><b>Destination:</b> {{destination}}</p>
+
+<p><b>Budget:</b> ₹{{budget}}</p>
+
+<p><b>Transport:</b> {{transport}}</p>
+
+</div>
+
+<a href="/userhome/">
+
+<button>
+
+Back To Home 🏠
+
+</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>

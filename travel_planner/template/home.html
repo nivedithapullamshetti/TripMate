@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TripMate - Travel Itinerary Planner</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 80px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(8px);
+}
+
+.logo{
+font-size:35px;
+font-weight:700;
+color:#00cfff;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+margin-left:25px;
+font-size:18px;
+font-weight:500;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#00cfff;
+}
+
+.hero{
+height:85vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:72px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:24px;
+max-width:850px;
+line-height:1.8;
+margin-bottom:40px;
+}
+
+.btn{
+padding:18px 45px;
+font-size:22px;
+font-weight:600;
+border:none;
+border-radius:50px;
+background:#00cfff;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+padding:70px 100px;
+}
+
+.card{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:20px;
+text-align:center;
+}
+
+.card h2{
+margin-bottom:15px;
+font-size:28px;
+}
+
+.card p{
+font-size:17px;
+line-height:1.7;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+padding:30px 20px 70px;
+}
+
+.stat-box{
+background:rgba(255,255,255,0.12);
+padding:25px 40px;
+border-radius:15px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.stat-box h2{
+font-size:35px;
+color:#00cfff;
+}
+
+.footer{
+text-align:center;
+padding:25px;
+background:rgba(0,0,0,0.3);
+font-size:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+✈ TripMate
+</div>
+
+<div class="nav-links">
+<a href="{% url 'home' %}">Home</a>
+<a href="{% url 'accounts' %}">Login</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Travel Itinerary Planner</h1>
+
+<p>
+Plan destinations, manage budgets, organize schedules,
+track expenses and create unforgettable travel experiences
+with TripMate.
+</p>
+
+<a href="{% url 'accounts' %}">
+    <button class="btn">
+        Start Planning
+    </button>
+</a>
+</section>
+
+<div class="stats">
+
+<div class="stat-box">
+<h2>100+</h2>
+<p>Destinations</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Trip Planning</p>
+</div>
+
+<div class="stat-box">
+<h2>Smart</h2>
+<p>Budget Tracking</p>
+</div>
+
+<div class="stat-box">
+<h2>Easy</h2>
+<p>Scheduling</p>
+</div>
+
+</div>
+
+<section class="features">
+
+<div class="card">
+<h2>🌍 Destinations</h2>
+<p>
+Search and manage travel destinations with ease.
+</p>
+</div>
+
+<div class="card">
+<h2>💰 Expenses</h2>
+<p>
+Track expenses and stay within your planned budget.
+</p>
+</div>
+
+<div class="card">
+<h2>🚆 Transport</h2>
+<p>
+Manage transportation and accommodation details.
+</p>
+</div>
+
+<div class="card">
+<h2>📅 Schedules</h2>
+<p>
+Generate complete travel schedules and itineraries.
+</p>
+</div>
+
+</section>
+
+<footer class="footer">
+© 2026 TripMate | Enjoy your Trip with your Loved one's
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Travel Expenses</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#0f172a;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+color:white;
+
+}
+
+.box{
+
+width:700px;
+
+padding:40px;
+
+border-radius:20px;
+
+background:#1e293b;
+
+}
+
+.row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:15px;
+
+font-size:20px;
+
+}
+
+.total{
+
+font-size:30px;
+
+margin-top:20px;
+
+text-align:center;
+
+color:cyan;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>💰 Expense Estimation</h1>
+
+<div class="row">
+<span>Your Budget</span>
+<span>₹{{budget}}</span>
+</div>
+
+<div class="row">
+<span>Transport</span>
+<span>₹{{transport}}</span>
+</div>
+
+<div class="row">
+<span>Accommodation</span>
+<span>₹{{hotel}}</span>
+</div>
+
+<div class="row">
+<span>Food</span>
+<span>₹{{food}}</span>
+</div>
+
+<div class="row">
+<span>Activities</span>
+<span>₹{{activities}}</span>
+</div>
+
+<div class="total">
+
+Total Expense: ₹{{total}}
+
+<br><br>
+
+Remaining Budget: ₹{{remaining}}
+
+</div>
+
+</div>
+
+</body>
+
+</html>

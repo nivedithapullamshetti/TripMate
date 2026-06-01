@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Destinations</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#0ea5e9);
+min-height:100vh;
+padding:40px;
+color:white;
+}
+
+.heading{
+text-align:center;
+margin-bottom:50px;
+animation:fadeIn 1.5s;
+}
+
+.heading h1{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.heading p{
+font-size:18px;
+opacity:.8;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+border-radius:25px;
+overflow:hidden;
+transition:.5s;
+box-shadow:0 8px 30px rgba(0,0,0,.3);
+
+animation:slideUp 1s;
+}
+
+.card:hover{
+transform:translateY(-15px) scale(1.04);
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+transition:1s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.content{
+padding:20px;
+}
+
+.content h2{
+margin-bottom:10px;
+}
+
+.content p{
+line-height:1.6;
+opacity:.9;
+}
+
+.btn{
+
+display:inline-block;
+margin-top:15px;
+padding:12px 25px;
+background:#00d4ff;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:.5s;
+}
+
+.btn:hover{
+
+background:#0099ff;
+transform:scale(1.1);
+}
+
+.home-btn{
+
+position:fixed;
+top:20px;
+left:20px;
+padding:12px 25px;
+background:white;
+color:#1e3a8a;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.home-btn:hover{
+transform:scale(1.1);
+}
+
+@keyframes slideUp{
+
+from{
+opacity:0;
+transform:translateY(50px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="/" class="home-btn">
+🏠 Home
+</a>
+
+<div class="heading">
+
+<h1>🌍 Explore Dream Destinations</h1>
+
+<p>
+Choose your next adventure destination
+</p>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da">
+
+<div class="content">
+
+<h2>Agra, India</h2>
+
+<p>
+Visit the beautiful Taj Mahal and explore Mughal architecture.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34">
+
+<div class="content">
+
+<h2>Paris, France</h2>
+
+<p>
+Experience romance and enjoy the Eiffel Tower.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2">
+
+<div class="content">
+
+<h2>New York, USA</h2>
+
+<p>
+Explore Times Square, Central Park and city life.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c">
+
+<div class="content">
+
+<h2>Dubai, UAE</h2>
+
+<p>
+Enjoy luxury shopping and Burj Khalifa.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989">
+
+<div class="content">
+
+<h2>Tokyo, Japan</h2>
+
+<p>
+Modern city with technology and cherry blossoms.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963">
+
+<div class="content">
+
+<h2>Switzerland</h2>
+
+<p>
+Snow mountains, lakes and peaceful landscapes.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c">
+
+<div class="content">
+
+<h2>Singapore</h2>
+
+<p>
+Gardens by the Bay and futuristic attractions.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
+
+<div class="content">
+
+<h2>London, UK</h2>
+
+<p>
+Big Ben, London Eye and historical beauty.
+</p>
+
+<a href="/trips/" class="btn">
+Plan Trip
+</a>
+
+</div>
+</div>
+
+
+</div>
+
+</body>
+</html>

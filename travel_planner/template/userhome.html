@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TripMate Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f4f7fc;
+}
+
+.navbar{
+background:#0f172a;
+color:white;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#38bdf8;
+}
+
+.user{
+font-size:18px;
+}
+
+.hero{
+background:linear-gradient(135deg,#2563eb,#38bdf8);
+color:white;
+padding:60px;
+text-align:center;
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:50px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card i{
+font-size:45px;
+margin-bottom:15px;
+color:#2563eb;
+}
+
+.card h2{
+margin-bottom:10px;
+}
+
+.card p{
+color:gray;
+margin-bottom:20px;
+}
+
+.card a{
+display:inline-block;
+padding:12px 25px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:10px;
+}
+
+.card a:hover{
+background:#1d4ed8;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+padding:20px 40px 50px;
+}
+
+.stat{
+background:white;
+padding:25px 40px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.stat h2{
+color:#2563eb;
+}
+
+.footer{
+margin-top:30px;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+✈ TripMate
+</div>
+
+<div class="user">
+Welcome, {{ request.user.username }}
+</div>
+
+</div>
+
+<div class="hero">
+
+<h1>Travel Dashboard</h1>
+
+<p>
+Plan trips, manage expenses, check weather forecasts,
+and organize your complete travel itinerary.
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h2>🌍</h2>
+<p>Destinations</p>
+</div>
+
+<div class="stat">
+<h2>💰</h2>
+<p>Budget Planner</p>
+</div>
+
+<div class="stat">
+<h2>📅</h2>
+<p>Schedules</p>
+</div>
+
+<div class="stat">
+<h2>🌤</h2>
+<p>Weather Alerts</p>
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<i class="fa-solid fa-suitcase"></i>
+<h2>Plan Trip</h2>
+<p>Create a new travel itinerary.</p>
+<a href="{% url 'trips' %}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-location-dot"></i>
+<h2>Destinations</h2>
+<p>Explore and manage destinations.</p>
+<a href="{% url 'destinations' %}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-money-bill-wave"></i>
+<h2>Expenses</h2>
+<p>Track travel expenses and budget.</p>
+<a href="{% url 'expenses' %}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-cloud-sun"></i>
+<h2>Weather Alert</h2>
+<p>Check weather before your trip.</p>
+<a href="{% url 'weather' %}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-calendar-days"></i>
+<h2>Schedules</h2>
+<p>Manage your trip schedule.</p>
+<a href="{% url 'schedules' %}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-folder-open"></i>
+<h2>Saved Trips</h2>
+<p>View previously planned trips.</p>
+<a href="{% url 'mytrips' %}">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-right-from-bracket"></i>
+<h2>Logout</h2>
+<p>Sign out from your account.</p>
+<a href="{% url 'logout' %}">Logout</a>
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 TripMate | Travel Itinerary Planner using Django & PostgreSQL
+</div>
+
+</body>
+</html>
