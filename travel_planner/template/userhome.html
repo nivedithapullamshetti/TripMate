@@ -133,6 +133,81 @@ text-align:center;
 padding:20px;
 }
 
+/* CHATBOT */
+
+#chat-icon{
+position:fixed;
+bottom:20px;
+right:20px;
+width:65px;
+height:65px;
+background:#2563eb;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+cursor:pointer;
+color:white;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+z-index:1000;
+}
+
+#chat-box{
+position:fixed;
+bottom:95px;
+right:20px;
+width:340px;
+height:450px;
+background:white;
+border-radius:15px;
+display:none;
+overflow:hidden;
+box-shadow:0 0 20px rgba(0,0,0,.3);
+z-index:1000;
+}
+
+#chat-header{
+background:#2563eb;
+color:white;
+padding:15px;
+font-weight:bold;
+text-align:center;
+}
+
+#chat-messages{
+height:300px;
+overflow-y:auto;
+padding:10px;
+color:black;
+}
+
+#chat-messages p{
+margin:10px 0;
+}
+
+#userInput{
+width:100%;
+padding:12px;
+border:none;
+border-top:1px solid #ddd;
+outline:none;
+}
+
+#chat-box button{
+width:100%;
+padding:12px;
+background:#2563eb;
+border:none;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+
+#chat-box button:hover{
+background:#1d4ed8;
+}
+
 </style>
 </head>
 
@@ -241,6 +316,201 @@ and organize your complete travel itinerary.
 <div class="footer">
 © 2026 TripMate | Travel Itinerary Planner using Django & PostgreSQL
 </div>
+
+<!-- CHATBOT -->
+
+<div id="chat-icon" onclick="toggleChat()">💬</div>
+
+<div id="chat-box">
+    <div id="chat-header">TripMate AI Assistant ✈</div>
+
+    <div id="chat-messages">
+        <p>
+            <b>TripMate AI:</b> 😄 Hey Traveller! Welcome to TripMate.<br><br>
+
+            Choose your mood 👇<br><br>
+
+            ❤️ Romantic<br>
+            💰 Budget Trip<br>
+            🏖 Beach Mood<br>
+            🌿 Nature Escape<br>
+            🔥 Adventure<br>
+            🍕 Foodie Trip<br>
+            🤗 Stress Relief<br>
+            👨‍👩‍👧 Family Trip<br><br>
+
+            Just type any option!
+        </p>
+    </div>
+
+    <input type="text" id="userInput" placeholder="Type your mood...">
+
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+
+function toggleChat(){
+    const box = document.getElementById("chat-box");
+    box.style.display =
+    box.style.display === "block" ? "none" : "block";
+}
+
+function sendMessage(){
+
+    const input =
+    document.getElementById("userInput");
+
+    const msg =
+    input.value.trim();
+
+    if(msg === "") return;
+
+    const chat =
+    document.getElementById("chat-messages");
+
+    chat.innerHTML +=
+    `<p><b>You:</b> ${msg}</p>`;
+
+    const text =
+    msg.toLowerCase();
+
+    let reply = "";
+
+    if(text.includes("boring") || text.includes("bored")){
+
+        reply =
+        "😄 Bore koduthundha?<br><br>" +
+        "🔥 Adventure<br>" +
+        "🏖 Beach<br>" +
+        "🌿 Nature<br>" +
+        "🍕 Foodie Trip<br><br>" +
+        "Type any one!";
+
+    }
+
+    else if(text.includes("romantic")){
+
+        reply =
+        "❤️ Romantic Destinations:<br><br>" +
+        "🌹 Ooty<br>" +
+        "🌄 Munnar<br>" +
+        "🌲 Coorg<br>" +
+        "🏔 Shimla";
+
+    }
+
+    else if(text.includes("budget")){
+
+        reply =
+        "💰 Budget Friendly Trips:<br><br>" +
+        "🚂 Araku Valley<br>" +
+        "🏖 Vizag<br>" +
+        "🛕 Srisailam<br>" +
+        "🌄 Horsley Hills";
+
+    }
+
+    else if(text.includes("beach")){
+
+        reply =
+        "🏖 Beach Destinations:<br><br>" +
+        "🌊 Goa<br>" +
+        "🏝 Andaman<br>" +
+        "🌴 Pondicherry<br>" +
+        "🌅 Vizag RK Beach";
+
+    }
+
+    else if(text.includes("nature")){
+
+        reply =
+        "🌿 Nature Escapes:<br><br>" +
+        "🍃 Araku Valley<br>" +
+        "🌲 Coorg<br>" +
+        "🌄 Munnar<br>" +
+        "🏞 Ooty";
+
+    }
+
+    else if(text.includes("adventure")){
+
+        reply =
+        "🔥 Adventure Trips:<br><br>" +
+        "🏔 Ladakh<br>" +
+        "🚵 Rishikesh<br>" +
+        "🏕 Manali<br>" +
+        "🌊 Goa Water Sports";
+
+    }
+
+    else if(text.includes("food")){
+
+        reply =
+        "🍕 Foodie Special:<br><br>" +
+        "🍗 Hyderabad<br>" +
+        "🥘 Vijayawada<br>" +
+        "🍜 Delhi<br>" +
+        "🌮 Mumbai";
+
+    }
+
+    else if(text.includes("stress")){
+
+        reply =
+        "🤗 Stress Relief Trips:<br><br>" +
+        "🌿 Araku Valley<br>" +
+        "🌲 Coorg<br>" +
+        "🏞 Munnar<br><br>" +
+        "Perfect for relaxation!";
+
+    }
+
+    else if(text.includes("family")){
+
+        reply =
+        "👨‍👩‍👧 Family Trip Suggestions:<br><br>" +
+        "🏰 Mysore<br>" +
+        "🌄 Ooty<br>" +
+        "🕌 Hyderabad<br>" +
+        "🏞 Coorg";
+
+    }
+
+    else{
+
+        reply =
+        "😊 Choose one option:<br><br>" +
+        "❤️ Romantic<br>" +
+        "💰 Budget<br>" +
+        "🏖 Beach<br>" +
+        "🌿 Nature<br>" +
+        "🔥 Adventure<br>" +
+        "🍕 Foodie<br>" +
+        "🤗 Stress Relief<br>" +
+        "👨‍👩‍👧 Family";
+
+    }
+
+    chat.innerHTML +=
+    `<p><b>TripMate AI:</b> ${reply}</p>`;
+
+    input.value = "";
+
+    chat.scrollTop =
+    chat.scrollHeight;
+}
+
+document.getElementById("userInput")
+.addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+        sendMessage();
+    }
+
+});
+
+</script>
 
 </body>
 </html>
