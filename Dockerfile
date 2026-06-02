@@ -6,8 +6,8 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-RUN cd travel_planner && python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 
 EXPOSE 10000
 
-CMD ["sh", "-c", "cd travel_planner && gunicorn wsgi:application --bind 0.0.0.0:10000"]
+CMD ["gunicorn", "travel_planner.wsgi:application", "--bind", "0.0.0.0:10000"]
