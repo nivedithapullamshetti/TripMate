@@ -63,44 +63,44 @@ def accounts(request):
                     "Invalid Username or Password"
                 )
 
-# REGISTER
-elif action == "register":
+        # REGISTER
+        elif action == "register":
 
-    try:
+            try:
 
-        if User.objects.filter(
-            username=username
-        ).exists():
+                if User.objects.filter(
+                    username=username
+                ).exists():
 
-            messages.error(
-                request,
-                "Username already exists"
-            )
+                    messages.error(
+                        request,
+                        "Username already exists"
+                    )
 
-        else:
+                else:
 
-            user = User.objects.create_user(
-                username=username,
-                password=password
-            )
+                    user = User.objects.create_user(
+                        username=username,
+                        password=password
+                    )
 
-            user.save()
+                    user.save()
 
-            messages.success(
-                request,
-                "Account Created Successfully"
-            )
+                    messages.success(
+                        request,
+                        "Account Created Successfully"
+                    )
 
-            return redirect(
-                'accounts'
-            )
+                    return redirect(
+                        'accounts'
+                    )
 
-    except Exception as e:
+            except Exception as e:
 
-        messages.error(
-            request,
-            str(e)
-        )
+                messages.error(
+                    request,
+                    str(e)
+                )
         
         
                 

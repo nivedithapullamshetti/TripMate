@@ -4,11 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install  -r requirements.txt
+RUN pip install -r requirements.txt
 
-
-RUN python manage.py collectstatic --noinput
+RUN cd travel_planner && python manage.py collectstatic --noinput
 
 EXPOSE 10000
 
-CMD ["gunicorn", "TRIPMATE.wsgi:application", "--bind", "0.0.0.0:10000"]
+CMD ["sh", "-c", "cd travel_planner && gunicorn wsgi:application --bind 0.0.0.0:10000"]
